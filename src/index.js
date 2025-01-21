@@ -1,11 +1,12 @@
 import express from "express";
 import http from "http";
-import config from "config";
+import dotenv from "dotenv";
+dotenv.config();
 import bodyParser from "body-parser";
 
 import router from "./v1/routes/index.js";
 
-const port = config.get("port") || 8080;
+const port = process.env.PORT;
 const app = express();
 
 // To connect with database

@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import config from "config";
 
 async function connectToDb() {
-  const dbUri = config.get("dbUri");
   mongoose.Promise = global.Promise;
 
-  mongoose.connect(dbUri);
+  mongoose.connect(process.env.DB_URI);
 
   mongoose.connection.on("connected", function () {
     console.log("connection established successfully");

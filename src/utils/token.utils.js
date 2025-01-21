@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
-import config from "config";
 
-const secretKey = config.get("jwtSecret");
-const tokenExpiration = config.get("tokenExpiration");
+const secretKey = process.env.JWT_SECRET;
+const tokenExpiration = process.env.TOKEN_EXPIRATION;
 
 /**
  * Generate token

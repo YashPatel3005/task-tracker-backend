@@ -1,9 +1,8 @@
 import jwt from "jsonwebtoken";
-import config from "config";
 import constants from "../../config/constants.js";
 import User from "../models/user.model.js";
 
-const secretKey = config.get("jwtSecret");
+const secretKey = process.env.JWT_SECRET;
 
 export const auth = async (req, res, next) => {
   try {
