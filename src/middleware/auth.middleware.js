@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import constants from "../../config/constants.js";
 import User from "../models/user.model.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const secretKey = process.env.JWT_SECRET;
 

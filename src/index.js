@@ -3,6 +3,7 @@ import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 import bodyParser from "body-parser";
+import cors from "cors";
 
 import router from "./v1/routes/index.js";
 
@@ -12,6 +13,13 @@ const app = express();
 // To connect with database
 import connectToDb from "./db/mongoose.js";
 connectToDb();
+
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  })
+);
 
 app.use(
   bodyParser.urlencoded({
