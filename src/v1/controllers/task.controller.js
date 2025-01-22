@@ -29,7 +29,7 @@ export const addTaskHandler = async (req, res) => {
     const taskData = await task.save();
 
     return res.status(200).send({
-      message: "User created successfully.",
+      message: "Task created successfully.",
       status: constants.STATUS_CODE.SUCCESS,
       error: false,
       data: taskData,
