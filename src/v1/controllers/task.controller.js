@@ -211,3 +211,43 @@ export const deleteTaskHandler = async (req, res) => {
     });
   }
 };
+
+/**
+ * Get task
+ *
+ * @params id
+ *
+ * @returns {}
+ */
+export const getTaskDetailsHandler = async (req, res) => {
+  try {
+    const taskId = req.params.id;
+
+    const task = await Task.findById(taskId);
+
+    if (!task) {
+      return res.status(404).json({
+        message: "Task not found.",
+        status: constants.STATUS_CODE.FAIL,
+        error: true,
+        data: {},
+      });
+    }
+
+    return res.status(200).send({
+      message: "Task details fetched successfully.",
+      status: constants.STATUS_CODE.SUCCESS,
+      error: false,
+      data: task,
+    });
+  } catch (error) {
+    console.log("Error while deleting tasks", error);
+
+    return res.status(500).send({
+      status: constants.STATUS_CODE.FAIL,
+      message: "Something went wrong",
+      error: true,
+      data: {},
+    });
+  }
+};

@@ -105,15 +105,15 @@ const loginHandler = async (req, res) => {
     const token = await user.generateToken();
     user.token = token;
 
-    const userData = await user.save();
+    const userdata = await user.save();
 
-    await removeKeyFromObject(userData);
+    await removeKeyFromObject(userdata);
 
     return res.status(200).send({
       status: constants.STATUS_CODE.SUCCESS,
       message: "Login success",
       error: false,
-      data: { userData, token },
+      data: { userdata, token },
     });
   } catch (error) {
     console.log("Error while login", error);
