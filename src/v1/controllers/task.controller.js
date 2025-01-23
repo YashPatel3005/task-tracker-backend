@@ -12,7 +12,10 @@ export const addTaskHandler = async (req, res) => {
   try {
     const { title } = req.body;
 
-    const doesTaskExist = await Task.findOne({ title });
+    const doesTaskExist = await Task.findOne({
+      title: title,
+      userId: req.user._id,
+    });
 
     if (doesTaskExist) {
       return res.status(400).json({
@@ -72,6 +75,7 @@ export const updateTaskHandler = async (req, res) => {
 
     const taskExitsWithSameTitle = await Task.findOne({
       title,
+      userId: req.user._id,
       _id: { $ne: taskId },
     });
 
