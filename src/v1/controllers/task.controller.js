@@ -68,7 +68,7 @@ export const updateTaskHandler = async (req, res) => {
       return res.status(404).json({
         message: "Task not found.",
         status: constants.STATUS_CODE.FAIL,
-        error: true,
+        error: false,
         data: {},
       });
     }
