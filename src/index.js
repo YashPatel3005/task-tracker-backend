@@ -19,7 +19,7 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:5173",
-      "https://task-tracker-upforce.netlify.app/",
+      "https://task-tracker-upforce.netlify.app",
     ],
   })
 );
